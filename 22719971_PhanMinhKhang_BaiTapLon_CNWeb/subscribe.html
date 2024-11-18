@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  
+  <link rel="stylesheet" href="./CSS/style.css">
+  <link rel="stylesheet" media = 'screen and (max-width: 768px)' href="./CSS/mobile.css">
+  <link href="https://fonts.googleapis.com/css?family=Lato|Staatliches&display=swap" rel="stylesheet">
+  <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+  <script src="https://kit.fontawesome.com/85a5fdd30e.js" async></script>
+  <script src="../22719971_PhanMinhKhang_BaiTapLon_CNWeb/js/jquery-3.7.1.min.js"></script>
+  <script src="../22719971_PhanMinhKhang_BaiTapLon_CNWeb/js/bootstrap.min.js"></script>
+  <style>
+    div label{
+      font-weight: 650;
+      font-size: large;
+    }
+    input[type="text"] {
+      width: 95%;  
+      height: 35px; 
+      padding: 10px; 
+      font-size: 16px;
+      border: 2px solid #ccc;
+      border-radius: 5px;
+      outline: none; 
+      transition: border-color 0.3s;
+    }
+    input[type="checkbox"] {
+      -webkit-appearance: none; 
+      appearance: none;      
+      width: 18px;         
+      height: 18px;           
+      background-color: #eee;
+      border: 3px solid #bbb;   
+      border-radius: 50%;     
+      cursor: pointer;         
+      transition: background-color 0.3s; 
+    }
+
+
+    input[type="checkbox"]:checked {
+      background-color: #ff2f13; 
+    }
+
+    select {
+      width: 200px;    
+      height: 35px;     
+      padding: 5px;    
+      font-size: 16px; 
+      border: 2px solid #ccc;
+      border-radius: 5px;
+      outline: none;   
+    }
+    .mauDo {
+      font-size: 100%;
+      color: red;
+    }
+    .mauXanh {
+      font-size: 100%;
+      color: rgb(52, 213, 52);
+    }
+  </style>
+  <script>
+    $(document).ready(function () {
+      function kiemTraHT() {
+        var kt = /^[A-Z][a-z]+(\s[A-Z][a-z]+)*$/;
+        if ($("#txtHT").val().trim() === "") {
+          $("#tbTen").html("Bắt buộc nhập");
+          $("#tbTen").addClass("mauDo");
+          return false;
+        } else if (!kt.test($("#txtHT").val())) {
+          $("#tbTen").html("Chữ cái đầu của mỗi từ phải viết hoa");
+          $("#tbTen").addClass("mauDo");
+          return false;
+        }
+        $("#tbTen").html("Tên hợp lệ");
+        $("#tbTen").addClass("mauXanh");
+        $("#tbTen").removeClass("mauDo");
+        return true;
+      }
+
+      function kiemTraDC() {
+        var mauKT1 = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+        if ($("#txtDC").val().trim() === "") {
+          $("#tbEmail").html("Bắt buộc nhập");
+          $("#tbEmail").addClass("mauDo");
+          return false;
+        } else if (!mauKT1.test($("#txtDC").val())) {
+          $("#tbEmail").html("Email không hợp lệ");
+          $("#tbEmail").addClass("mauDo");
+          return false;
+        }
+        $("#tbEmail").html("Email hợp lệ");
+        $("#tbEmail").addClass("mauXanh");
+        $("#tbEmail").removeClass("mauDo");
+        return true;
+      }
+
+      function kiemTraSDT() {
+        var mauKT1 = /^(?:\(\d{3}\)\s?|\d{3}[-\s]?)\d{3}[-\s]?\d{4}$/;
+        if ($("#txtSDT").val().trim() === "") {
+          $("#tbSDT").html("Bắt buộc nhập");
+          $("#tbSDT").addClass("mauDo");
+          return false;
+        } else if (!mauKT1.test($("#txtSDT").val())) {
+          $("#tbSDT").html("Số diện thoại không hợp lệ");
+          $("#tbSDT").addClass("mauDo");
+          return false;
+        }
+        $("#tbSDT").html("Số điện thoại hợp lệ");
+        $("#tbSDT").addClass("mauXanh");
+        $("#tbSDT").removeClass("mauDo");
+        return true;
+      }
+
+      $("#txtHT").blur(kiemTraHT);
+      $("#txtDC").blur(kiemTraDC);
+      $("#txtSDT").blur(kiemTraSDT);
+
+
+      $("#btnSave").click(function () {
+        if (kiemTraHT() && kiemTraDC()) {
+          $("#tbSave").html("Đăng ký thành công");
+          $("#tbSave").addClass("mauXanh");
+          $("#registrationForm")[0].reset();
+          $("#tbTen").html("");
+          $("#tbEmail").html("");
+          return true;
+        }
+        return false;
+      });
+    });
+  </script>
+  <title>TOYS | Subscribe</title>
+</head>
+<body>
+  <nav id="main-nav">
+    <div class="container">
+      <img src="img/logo.jpg" class="logo">
+      <div class = 'social'>
+        <a href="#" target = 'blank'><i class="fab fa-facebook fa-2x"></i></a>
+        <a href="#" target = 'blank'><i class="fab fa-twitter fa-2x"></i></a>
+        <a href="#" target = 'blank'><i class="fab fa-instagram fa-2x"></i></a>
+        <a href="#" target = 'blank'><i class="fab fa-youtube fa-2x"></i></a>
+      </div>
+      <ul>
+        <li><a href="index.html">Trang chủ</a></li>
+        <li><a href="about.html">Về chúng tôi</a></li>
+        <li><a href="subscribe.html" class="current">Đăng ký</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <section id="about">
+    <div class="container">
+      <div class="page-container">
+        <article class="card">
+          <h1 class='l-heading'>Đăng ký Email</h1>
+          <form class="form-control">
+            <div class="mb-3 row">
+              <label for="inputName" class="col-sm-2 col-form-label">Tên của bạn:</label>
+              <div class="col-sm-10">
+                <input type="text" id="txtHT" class="form-control" placeholder="Họ tên">
+              </div>
+              <span id="tbTen"></span>
+            </div>
+            <br>
+            <div class="mb-3 row">
+              <label for="staticEmail" class="col-sm-2 col-form-label">Email:</label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control" placeholder="abc@gmail.com" id="txtDC">
+              </div>
+              <span id="tbEmail"></span>
+            </div>  
+            <br>
+            <div class="mb-3 row">
+              <label for="inputName" class="col-sm-2 col-form-label">Số điện thoại của bạn:</label>
+              <div class="col-sm-10">
+                <input type="text" id="txtSDT" class="form-control" placeholder="">
+              </div>
+              <span id="tbSDT"></span>
+            </div>
+            <br>
+            <input type="submit" value="ĐĂNG KÝ" class = 'btn btn-primary' id="btnSave">
+            <span id="btnSave"></span>
+          </form>
+        </article>
+        <aside class="card bg-primary">
+          <h2>Tham gia cùng chúng tôi</h2>
+          <p>Hãy tham gia cùng chúng tôi cung cấp các dịch vụ bán hàng trực tuyến tốt nhất</p>
+          <a href="#" class='btn btn-dak btn-block'>Tham gia ngay</a>
+        </aside>
+      </div>
+    </div>
+  </section>
+  
+  <footer id = 'main-footer' class = 'py-2'>
+    <div class="container footer-container">
+      <div>
+        <img src="img/logo.jpg" alt="logo">
+        <p>TOYS chuyên đồ chơi an toàn, chất lượng cao, giúp bé phát triển trí tuệ và sáng tạo. Nhiều mẫu mã đa dạng, giao hàng nhanh, giá ưu đãi!</p>
+      </div>
+      <div>
+        <h3>THÔNG TIN THÊM </h3>
+        <ul class = 'list'>
+          <li><a href="#">Hỗ trợ </a></li>
+          <li><a href="privacy.html">Chính sách quyền riêng tư</a></li>
+          <li><a href="about.html">Về chúng tôi</a></li>
+          <li><a href="#">Liên hệ chúng tôi</a></li>
+        </ul>
+      </div>
+      <div>
+        <p>
+          Phan Minh Khang, 22719971, Bài tập lớn Web HKI (24-25) 
+        </p>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
