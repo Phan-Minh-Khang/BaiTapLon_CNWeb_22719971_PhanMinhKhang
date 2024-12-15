@@ -99,7 +99,7 @@
       }
 
       function kiemTraSDT() {
-        var mauKT1 = /^(?:\(\d{3}\)\s?|\d{3}[-\s]?)\d{3}[-\s]?\d{4}$/;
+        var mauKT1 = /^\d{10}$/;
         if ($("#txtSDT").val().trim() === "") {
           $("#tbSDT").html("Bắt buộc nhập");
           $("#tbSDT").addClass("mauDo");
